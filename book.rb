@@ -1,30 +1,30 @@
-// 本棚のファイル木（仮）
-// 基本的にツリー構造であるがそれぞれの頂点が重みを持つ
-// 重みの計算は 葉が1、他がそれぞれの子の重みの合計
-// また登録順に各頂点はidが割り振られ、それによってUnionFind木が生成されている
-// 【出来ること】
-// 各ジャンルにある本の冊数の計算：各ジャンルの頂点の重みがそのまま反映される
-// 各本のジャンルの検索：idで検索するように(Hashでidと名前の対応を持っておく)すればUnionFind木によって根がすぐにわかる
-// など
-// 【使い方】
-// 画像はMindmap形式でつくっているがそれを入力する時と同じように
-// 親が本棚ならば：bookTree.addBook("Hoge")
-// 親がジャンルHogeなら：bookTree.addBook("hogeChild", "Hoge")
-// というように一個ずつ追加していく
-// あるいはaddFromFileを使う場合データの形式は
-//      親ジャンルの数
-//      親ジャンルの名前
-//      ...
-//      親ジャンルの名前 子ジャンルの名前
-//      ...
-//      子ジャンルの名前 本の名前
-//      ...
-// のようにする。ただし親として指定した名前が存在しない場合本が追加されないのでかならず深さの低いところから入力するようにしなければならない。
-// MARK: BookTree
+# 本棚のファイル木（仮）
+# 基本的にツリー構造であるがそれぞれの頂点が重みを持つ
+# 重みの計算は 葉が1、他がそれぞれの子の重みの合計
+# また登録順に各頂点はidが割り振られ、それによってUnionFind木が生成されている
+# 【出来ること】
+# 各ジャンルにある本の冊数の計算：各ジャンルの頂点の重みがそのまま反映される
+# 各本のジャンルの検索：idで検索するように(Hashでidと名前の対応を持っておく)すればUnionFind木によって根がすぐにわかる
+# など
+# 【使い方】
+# 画像はMindmap形式でつくっているがそれを入力する時と同じように
+# 親が本棚ならば：bookTree.addBook("Hoge")
+# 親がジャンルHogeなら：bookTree.addBook("hogeChild", "Hoge")
+# というように一個ずつ追加していく
+# あるいはaddFromFileを使う場合データの形式は
+#      親ジャンルの数
+#      親ジャンルの名前
+#      ...
+#      親ジャンルの名前 子ジャンルの名前
+#      ...
+#      子ジャンルの名前 本の名前
+#      ...
+# のようにする。ただし親として指定した名前が存在しない場合本が追加されないのでかならず深さの低いところから入力するようにしなければならない。
+# MARK: BookTree
 class BookTree
-    // uTree: UnionFind木, hMap: 名前からid
-    // wArray: 重みのArray, adjArray: 有向グラフで必ず子から親に向いている
-    // nameMap: idから名前
+    # uTree: UnionFind木, hMap: 名前からid
+    # wArray: 重みのArray, adjArray: 有向グラフで必ず子から親に向いている
+    # nameMap: idから名前
     attr_accessor: uTree, hMap, wArray, adjArray
     def initialize()
         @uTree = UnionFind.new
@@ -67,7 +67,7 @@ class BookTree
         end
     end
 
-    // ファイルから読み込みたい時
+    # ファイルから読み込みたい時
     def addFromFile(file)
         f = open(file)
         size = f.gets.to_i
@@ -83,17 +83,17 @@ class BookTree
         f.close
     end
 
-    // そのジャンルを何冊持っているか？
+    # そのジャンルを何冊持っているか？
     def howMany(name)
         return wArray[hMap[name]]
     end
 
-    // どのジャンルに属するか
+    # どのジャンルに属するか
     def whatKind(name)
         return nameMap[@uTree.findSet(hMap[name])]
     end
 
-    // 本のSet（ジャンル抜きで各本のリストを名前で）
+    # 本のSet（ジャンル抜きで各本のリストを名前で）
     def toSet()
         allList = uTree.toSet()
         result = Array.new
@@ -110,7 +110,7 @@ class BookTree
     end
 end
 
-// MARK: UnionFind
+# MARK: UnionFind
 class UnionFind
     def initialize()
         @parent = Array.new
