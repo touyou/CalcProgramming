@@ -51,7 +51,7 @@ class UnionFind
     end
 end
 
-// 練習2 ... 低いほうの木のrootが高い方の木のrootの親になるようにunionして行った時
+# 練習2 ... 低いほうの木のrootが高い方の木のrootの親になるようにunionして行った時
 
 class Graph
     def connectedComponent(u)
@@ -138,9 +138,9 @@ def test2(a)
     print a*",","\n"
 end
 
-// 練習4 ... pivotの値と他の要素はすべて等しいのでif @a[j]<= xは常に実行される。よってpartition(p,r)の返り値は常にrに等しくなる。quickSort(r+1,r)は実行されても常になにもせず、quickSort(p,r-1)のrが次第にpに近づいていくので結局このquickSortは終了すると言える
+# 練習4 ... pivotの値と他の要素はすべて等しいのでif @a[j]<= xは常に実行される。よってpartition(p,r)の返り値は常にrに等しくなる。quickSort(r+1,r)は実行されても常になにもせず、quickSort(p,r-1)のrが次第にpに近づいていくので結局このquickSortは終了すると言える
 
-// 練習5
+# 練習5
 def findNth(a, n)
     ah = Array.new
     al = Array.new
@@ -162,7 +162,7 @@ def findNth(a, n)
     end
 end
 
-// MARK: Graph
+# MARK: Graph
 class Graph
     attr_accessor :adjMatrix
     def initialize(fname)
@@ -224,7 +224,7 @@ def copy(a)
     return d
 end
 
-// MARK: Dijkstra
+# MARK: Dijkstra
 class Dijkstra
     attr_accessor :list, :d, :prev
     def initialize(fname)
