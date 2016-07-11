@@ -12,7 +12,7 @@ def test
     p s&t
 end
 
-// 練習１　O(N)
+# 練習１　O(N)
 
 class H
     attr_reader :x,:y
@@ -42,10 +42,10 @@ def test2
     s.add(H.new(2,1))
 end
 
-// 練習３
-// 1. 集合に入っているか？→f[object] != nilでO(1)
-// 2. ハッシュリストを走査してnilでないものを表示→O(max-min)
-// 3. O(1) 4. O(1)?
+# 練習３
+# 1. 集合に入っているか？→f[object] != nilでO(1)
+# 2. ハッシュリストを走査してnilでないものを表示→O(max-min)
+# 3. O(1) 4. O(1)?
 
 def findPrime(size)
     v = 0
@@ -61,7 +61,7 @@ def findPrime(size)
     end
 end
 
-// 練習5
+# 練習5
 def findPrimeSet(size)
     v = SortedSet.new(2..size-1)
     v.each do |n|
@@ -122,11 +122,11 @@ class UnionFind
     end
 end
 
-// 練習6 ... 低いほうの木のrootが高い方の木のrootの親になるようにunionして行った時
+# 練習6 ... 低いほうの木のrootが高い方の木のrootの親になるようにunionして行った時
 
-// 練習7 ... pivotの値と他の要素はすべて等しいのでif @a[j]<= xは常に実行される。よってpartition(p,r)の返り値は常にrに等しくなる。quickSort(r+1,r)は実行されても常になにもせず、quickSort(p,r-1)のrが次第にpに近づいていくので結局このquickSortは終了すると言える
+# 練習7 ... pivotの値と他の要素はすべて等しいのでif @a[j]<= xは常に実行される。よってpartition(p,r)の返り値は常にrに等しくなる。quickSort(r+1,r)は実行されても常になにもせず、quickSort(p,r-1)のrが次第にpに近づいていくので結局このquickSortは終了すると言える
 
-// 練習8
+# 練習8
 def findNth(a, n)
     ah = Array.new
     al = Array.new
